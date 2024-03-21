@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.triboqa.dscatalog.entities.Category;
 import com.triboqa.dscatalog.repositories.CategoryRepository;
@@ -16,6 +17,7 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	@Transactional(readOnly = true) //Evita travar o banco para operações quando faz leitura de dados
 	public List<Category> listaTodasCategorias(){
 		return categoryRepository.findAll();
 		
