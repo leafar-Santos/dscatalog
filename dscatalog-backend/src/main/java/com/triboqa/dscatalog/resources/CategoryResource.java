@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.triboqa.dscatalog.entities.Category;
+import com.triboqa.dscatalog.entities.dto.CategoryDTO;
 import com.triboqa.dscatalog.services.CategoryService;
 
 @RestController
@@ -24,10 +25,9 @@ public class CategoryResource {
 	//Método Get todas as categorias
 	
 	@GetMapping()
-	public ResponseEntity<List<Category>> findAll(){
-		List<Category> list = categoryService.listaTodasCategorias();
+	public ResponseEntity<List<CategoryDTO>> findAll(){
+		List<CategoryDTO> list = categoryService.findAll();
 		return ResponseEntity.ok().body(list);
-
 	}
 	
 
